@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deepak Portfolio</title>
+
+  <!-- Bootstrap 5 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ─── RESET & BASE ─── */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #081b29;
+      color: #fff;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #081b29;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #00e5ff;
+      border-radius: 10px;
+    }
+
+    /* ─── HEADER ─── */
+    .navbar-custom {
+      background: rgba(8, 27, 41, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 229, 255, 0.08);
+      padding: 18px 0;
+      transition: background 0.3s;
+    }
+
+    .navbar-custom.scrolled {
+      background: rgba(8, 27, 41, 0.95);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #00e5ff;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+    .logo span {
+      color: #fff;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 0.5rem 1rem !important;
+      position: relative;
+      transition: none;
+    }
+
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: #00e5ff;
+      transition: width 0.3s;
+    }
+
+    .navbar-nav .nav-link.active::after {
+      width: 70%;
+    }
+
+    /* ─── HOME ─── */
+    .home-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+    }
+
+    .home-content .greeting {
+      font-size: 18px;
+      color: #aaa;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .home-content h1 {
+      font-size: 70px;
+      font-weight: 800;
+      color: #00e5ff;
+      line-height: 1.1;
+    }
+
+    .home-content h2 {
+      font-size: 32px;
+      font-weight: 400;
+    }
+    .home-content h2 span {
+      color: #00e5ff;
+      font-weight: 600;
+    }
+
+    .home-content .bio {
+      margin: 18px 0 25px;
+      line-height: 1.9;
+      color: #ccc;
+      font-size: 16px;
+    }
+    .home-content .bio i {
+      color: #00e5ff;
+      margin-right: 6px;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border: 2px solid #00e5ff;
+      border-radius: 50%;
+      color: #00e5ff;
+      font-size: 20px;
+      text-decoration: none;
+      margin-right: 12px;
+    }
+
+    .btn-custom {
+      display: inline-block;
+      background: #00e5ff;
+      color: #081b29;
+      padding: 13px 34px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 15px;
+      border: none;
+      text-decoration: none;
+      transition: none;
+    }
+    .btn-custom:hover {
+      background: #00e5ff;
+      color: #081b29;
+    }
+
+    .btn-outline-custom {
+      background: transparent;
+      color: #00e5ff;
+      border: 2px solid #00e5ff;
+      margin-left: 12px;
+    }
+    .btn-outline-custom:hover {
+      background: transparent;
+      color: #00e5ff;
+    }
+
+    .home-img-wrapper {
+      position: relative;
+      width: 380px;
+      height: 380px;
+      margin: 0 auto;
+    }
+
+    .home-img-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #00e5ff, #00ffff, #00e5ff);
+      background-size: 300% 300%;
+      animation: rotateGlow 4s linear infinite;
+    }
+
+    .home-img-wrapper img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 8px solid #081b29;
+      z-index: 1;
+    }
+
+    @keyframes rotateGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 100px 0;
+    }
+
+    .heading {
+      text-align: center;
+      font-size: 44px;
+      font-weight: 700;
+      color: #00e5ff;
+      margin-bottom: 10px;
+    }
+
+    .heading::after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: #00e5ff;
+      margin: 12px auto 0;
+      border-radius: 4px;
+    }
+
+    .sub-heading {
+      text-align: center;
+      color: #aaa;
+      font-size: 16px;
+      margin-bottom: 45px;
+      font-weight: 300;
+    }
+
+    /* ─── ABOUT CARDS ─── */
+    .about-box {
+      background: #112e42;
+      padding: 32px 28px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      height: 100%;
+    }
+    .about-box .icon {
+      font-size: 36px;
+      color: #00e5ff;
+      margin-bottom: 14px;
+    }
+    .about-box h2 {
+      color: #00e5ff;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+    .about-box p {
+      line-height: 1.8;
+      color: #ccc;
+      font-size: 14.5px;
+    }
+
+    /* ─── SKILLS ─── */
+    .skill-category {
+      background: #112e42;
+      padding: 28px 24px;
+      border-radius: 16px;
+      height: 100%;
+    }
+    .skill-category h3 {
+      color: #00e5ff;
+      font-size: 18px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .skill-tag {
+      background: rgba(0, 229, 255, 0.1);
+      color: #00e5ff;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid rgba(0, 229, 255, 0.15);
+      display: inline-block;
+      margin: 0 6px 10px 0;
+    }
+
+    /* ─── PROJECTS ─── */
+    .project-card {
+      background: #112e42;
+      border-radius: 16px;
+      padding: 28px 26px;
+      border: 1px solid transparent;
+      cursor: default;
+      height: 100%;
+      transition: none;
+    }
+    .project-card .project-icon {
+      font-size: 32px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .project-card h3 {
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .project-card p {
+      color: #ccc;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .project-card .tech-stack span {
+      background: rgba(255, 255, 255, 0.06);
+      color: #ccc;
+      padding: 3px 14px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: inline-block;
+      margin: 0 6px 8px 0;
+    }
+
+    /* ─── PROJECT MODAL (Bootstrap overrides) ─── */
+    .modal-content {
+      background: #112e42;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      color: #fff;
+    }
+    .modal-header, .modal-footer {
+      border: none;
+    }
+    .modal-header .btn-close {
+      filter: invert(1);
+    }
+    .modal-body .modal-icon {
+      font-size: 48px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .modal-body h2 {
+      color: #fff;
+      font-size: 28px;
+    }
+    .modal-body .modal-description {
+      color: #ccc;
+      line-height: 1.9;
+      font-size: 15px;
+      margin: 16px 0;
+    }
+    .modal-body .modal-tech span {
+      background: rgba(255, 255, 255, 0.06);
+      color: #ccc;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: inline-block;
+      margin: 0 8px 8px 0;
+    }
+
+    /* ─── INTERNSHIP ─── */
+    .internship-box {
+      background: #112e42;
+      padding: 40px 42px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .internship-box .company-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 229, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #00e5ff;
+    }
+    .internship-box .company-info h2 {
+      color: #00e5ff;
+      font-size: 22px;
+    }
+    .internship-box .company-info p {
+      color: #aaa;
+      font-size: 14px;
+    }
+    .internship-box .detail-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 40px;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin: 18px 0 22px;
+    }
+    .internship-box .detail-row span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ccc;
+      font-size: 14px;
+    }
+    .internship-box .detail-row span i {
+      color: #00e5ff;
+    }
+    .internship-box .description {
+      color: #ccc;
+      line-height: 1.9;
+      font-size: 15px;
+      margin-bottom: 22px;
+    }
+    .internship-box .project-item {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin-top: 16px;
+      border-left: 4px solid #00e5ff;
+    }
+    .internship-box .project-item h4 {
+      color: #00e5ff;
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+    .internship-box .project-item p {
+      color: #bbb;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .internship-box .project-item .tech span {
+      background: rgba(255, 255, 255, 0.06);
+      color: #ccc;
+      padding: 2px 14px;
+      border-radius: 12px;
+      font-size: 11px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: inline-block;
+      margin: 0 6px 6px 0;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact-info .info-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #112e42;
+      padding: 16px 22px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+    }
+    .contact-info .info-item i {
+      font-size: 22px;
+      color: #00e5ff;
+      width: 40px;
+      text-align: center;
+    }
+    .contact-info .info-item .text h4 {
+      font-size: 15px;
+      color: #fff;
+    }
+    .contact-info .info-item .text span {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .contact-form {
+      background: #112e42;
+      padding: 36px 34px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .contact-form h3 {
+      color: #00e5ff;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .contact-form .form-control {
+      background: #081b29;
+      border: 1px solid rgba(0, 229, 255, 0.1);
+      color: #fff;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+    .contact-form .form-control:focus {
+      border-color: #00e5ff;
+      box-shadow: none;
+    }
+    .contact-form .form-control::placeholder {
+      color: #888;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      background: #06141f;
+      padding: 28px 20px;
+      border-top: 1px solid rgba(0, 229, 255, 0.05);
+    }
+    footer .footer-social a {
+      color: #aaa;
+      font-size: 18px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(0, 229, 255, 0.06);
+      text-decoration: none;
+      margin: 0 6px;
+    }
+    footer p {
+      color: #777;
+      font-size: 14px;
+      margin: 0;
+    }
+    footer p span {
+      color: #00e5ff;
+    }
+
+    /* ─── SCROLL TOP ─── */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: #00e5ff;
+      color: #081b29;
+      border: none;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 999;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* ─── FADE UP ANIMATION ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── TYPING CURSOR ─── */
+    .cursor {
+      animation: blink 0.7s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* ─── RESPONSIVE TWEAKS ─── */
+    @media (max-width: 992px) {
+      .home-section {
+        text-align: center;
+        padding-top: 120px;
+      }
+      .home-content h1 {
+        font-size: 50px;
+      }
+      .home-img-wrapper {
+        width: 300px;
+        height: 300px;
+        margin-top: 30px;
+      }
+      .social-icons {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .home-content h1 {
+        font-size: 36px;
+      }
+      .home-content h2 {
+        font-size: 24px;
+      }
+      .home-img-wrapper {
+        width: 220px;
+        height: 220px;
+      }
+      .heading {
+        font-size: 32px;
+      }
+      section {
+        padding: 60px 0;
+      }
+      .internship-box {
+        padding: 24px 16px;
+      }
+      .contact-form {
+        padding: 24px 16px;
+      }
+      .btn-outline-custom {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="header">
+  <div class="container">
+    <a class="logo" href="#">PORT<span>FOLIO</span></a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#internship">Internship</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HOME ─── -->
+<section id="home" class="home-section">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-7 home-content">
+        <p class="greeting"><i class="bi bi-hand-peace"></i> Hello, It's Me</p>
+        <h1>Deepak</h1>
+        <h2>I'm a <span id="typing"></span><span class="cursor">|</span></h2>
+        <p class="bio">
+          <i class="bi bi-mortarboard"></i> AI & Data Science Student at Vel Tech University.<br>
+          <i class="bi bi-code-slash"></i> Passionate about Web Development, Java, Python, ML & Data Analytics.
+        </p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/deepak-s-570983394/" target="_blank"><i class="bi bi-linkedin"></i></a>
+        </div>
+        <div class="mt-3">
+          <a href="#" class="btn-custom"><i class="bi bi-download"></i> Download Resume</a>
+          <a href="#contact" class="btn-custom btn-outline-custom"><i class="bi bi-envelope"></i> Contact Me</a>
+        </div>
+      </div>
+      <div class="col-lg-5 text-center">
+        <div class="home-img-wrapper">
+          <img src="profile.jpg" alt="Deepak" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="container">
+    <h1 class="heading fade-up">About Me</h1>
+    <p class="sub-heading fade-up">Know more about who I am and what drives me</p>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="about-box">
+          <div class="icon"><i class="bi bi-person-astronaut"></i></div>
+          <h2>Who I Am</h2>
+          <p>I'm a 3rd-year AI & Data Science student at Vel Tech University with a deep passion for building real-world applications.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="about-box">
+          <div class="icon"><i class="bi bi-laptop"></i></div>
+          <h2>What I Do</h2>
+          <p>I specialize in full-stack web development using Django, React, and SQL. I also work with Java, Python for data analysis and ML.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="about-box">
+          <div class="icon"><i class="bi bi-bullseye"></i></div>
+          <h2>My Goal</h2>
+          <p>To become a versatile software engineer bridging data science and application development. Seeking internships and real-time projects.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="about-box">
+          <div class="icon"><i class="bi bi-heart"></i></div>
+          <h2>Beyond Coding</h2>
+          <p>I enjoy reading tech blogs, contributing to open-source, mentoring juniors, and exploring new frameworks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SKILLS ─── -->
+<section id="skills">
+  <div class="container">
+    <h1 class="heading fade-up">My Skills</h1>
+    <p class="sub-heading fade-up">Technologies and tools I work with</p>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-category">
+          <h3><i class="bi bi-palette"></i> Frontend</h3>
+          <div>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Bootstrap</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-category">
+          <h3><i class="bi bi-server"></i> Backend</h3>
+          <div>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">Spring Boot</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-category">
+          <h3><i class="bi bi-database"></i> Database</h3>
+          <div>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">SQLite</span>
+            <span class="skill-tag">MongoDB</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-category">
+          <h3><i class="bi bi-robot"></i> Data &amp; AI</h3>
+          <div>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">OpenCV</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-category">
+          <h3><i class="bi bi-tools"></i> Tools &amp; DevOps</h3>
+          <div>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">IntelliJ</span>
+            <span class="skill-tag">Postman</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="skill-category">
+          <h3><i class="bi bi-people"></i> Soft Skills</h3>
+          <div>
+            <span class="skill-tag">Communication</span>
+            <span class="skill-tag">Teamwork</span>
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">Leadership</span>
+            <span class="skill-tag">Time Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROJECTS ─── -->
+<section id="projects">
+  <div class="container">
+    <h1 class="heading fade-up">Projects</h1>
+    <p class="sub-heading fade-up">Some of the projects I've built</p>
+    <div class="row g-4">
+      <!-- Project cards – each triggers a modal -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="convex-hull">
+          <div class="project-icon"><i class="bi bi-cube"></i></div>
+          <h3>Convex Hull Detection</h3>
+          <p>Implementation of computational geometry algorithms to detect the convex hull of a set of points. Built with Python and OpenCV.</p>
+          <div class="tech-stack">
+            <span>Python</span><span>OpenCV</span><span>NumPy</span><span>Matplotlib</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="auto-door">
+          <div class="project-icon"><i class="bi bi-door-open"></i></div>
+          <h3>Auto Door Opening System</h3>
+          <p>IoT-based automatic door using PIR sensor and Arduino. Detects human presence and triggers a servo motor.</p>
+          <div class="tech-stack">
+            <span>Arduino</span><span>PIR Sensor</span><span>Servo Motor</span><span>C++</span><span>IoT</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="quantum">
+          <div class="project-icon"><i class="bi bi-shield-lock"></i></div>
+          <h3>Quantum Cryptography</h3>
+          <p>Digital identity system leveraging quantum cryptography for ultra‑secure authentication.</p>
+          <div class="tech-stack">
+            <span>Python</span><span>Qiskit</span><span>Cryptography</span><span>Blockchain</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="gesture">
+          <div class="project-icon"><i class="bi bi-hand-peace"></i></div>
+          <h3>Hand Gesture Recognition</h3>
+          <p>Real‑time hand gesture recognition with OpenCV and MediaPipe. Detects and classifies gestures.</p>
+          <div class="tech-stack">
+            <span>Python</span><span>OpenCV</span><span>MediaPipe</span><span>TensorFlow</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="airport">
+          <div class="project-icon"><i class="bi bi-airplane"></i></div>
+          <h3>Airport Management System</h3>
+          <p>Desktop app for flight scheduling, passenger check‑in, and baggage tracking.</p>
+          <div class="tech-stack">
+            <span>Java</span><span>SQL</span><span>Swing</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="courier">
+          <div class="project-icon"><i class="bi bi-truck"></i></div>
+          <h3>Courier Tracking System</h3>
+          <p>Full‑stack web app for tracking parcels, managing shipments, and updating delivery status.</p>
+          <div class="tech-stack">
+            <span>Django</span><span>React</span><span>SQL</span><span>CSS3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROJECT MODAL ─── -->
+<div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-icon" id="modalIcon"><i class="bi bi-cube"></i></div>
+        <h2 id="modalTitle">Project Title</h2>
+        <p class="modal-description" id="modalDescription">Project description goes here.</p>
+        <div class="modal-tech" id="modalTech"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── INTERNSHIP ─── -->
+<section id="internship">
+  <div class="container">
+    <h1 class="heading fade-up">Internship Experience</h1>
+    <p class="sub-heading fade-up">Real‑world experience from industry</p>
+    <div class="internship-box fade-up">
+      <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
+        <div class="company-icon"><i class="bi bi-building"></i></div>
+        <div class="company-info">
+          <h2>Software Development Intern</h2>
+          <p><i class="bi bi-geo-alt" style="color:#00e5ff;"></i> VY Systems, Chennai</p>
+        </div>
+      </div>
+      <div class="detail-row">
+        <span><i class="bi bi-calendar3"></i> Duration: 1 Month</span>
+        <span><i class="bi bi-clock"></i> Full‑time</span>
+        <span><i class="bi bi-laptop"></i> Hybrid</span>
+      </div>
+      <div class="description">
+        <p>
+          During my one‑month internship at <strong style="color:#00e5ff;">VY Systems</strong>,
+          I worked as a <strong style="color:#00e5ff;">Software Development Intern</strong>,
+          gaining practical exposure to full‑stack web development, database management,
+          UI/UX design, and agile practices. I contributed to production‑level projects.
+        </p>
+        <p class="mt-2">
+          <strong style="color:#00e5ff;">Key Learnings:</strong>
+          <i class="bi bi-check-circle-fill" style="color:#00e5ff;"></i> Django REST
+          <i class="bi bi-check-circle-fill" style="color:#00e5ff; margin-left:12px;"></i> React hooks
+          <i class="bi bi-check-circle-fill" style="color:#00e5ff; margin-left:12px;"></i> SQL optimization
+          <i class="bi bi-check-circle-fill" style="color:#00e5ff; margin-left:12px;"></i> Git workflow
+        </p>
+      </div>
+      <h4 style="color:#00e5ff; font-size:18px; margin-bottom:12px;">
+        <i class="bi bi-folder-open"></i> Projects Completed
+      </h4>
+      <div class="project-item">
+        <h4>🏢 Airport Management System</h4>
+        <p>Standalone desktop app for airline operations, passenger details, flight schedules, and baggage tracking.</p>
+        <div class="tech">
+          <span>Java</span><span>SQL</span><span>Swing</span>
+        </div>
+      </div>
+      <div class="project-item">
+        <h4>📦 Courier &amp; Parcel Tracking System</h4>
+        <p>Full‑stack web app for managing courier bookings, shipment details, delivery status, and customer data.</p>
+        <div class="tech">
+          <span>Django</span><span>React</span><span>SQL</span><span>HTML5</span><span>CSS3</span>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="https://www.google.com/maps/dir//VyTCDC,+9,+Brindavan+Main+Rd,+Palaniappa+Nagar,+Valasaravakkam,+Chennai,+Tamil+Nadu+600087/@13.0449408,80.1800192,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3a52612df3fe2785:0xdc877a84035a4719!2m2!1d80.1829839!2d13.0442414?entry=ttu" target="_blank" class="btn-custom">
+          <i class="bi bi-geo-alt"></i> View Company Location
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="container">
+    <h1 class="heading fade-up">Contact Me</h1>
+    <p class="sub-heading fade-up">Let's connect and build something amazing</p>
+    <div class="row g-5">
+      <div class="col-lg-5 contact-info fade-up">
+        <h3>Get in Touch</h3>
+        <p>I'm always open to new opportunities, collaborations, and conversations. Feel free to reach out.</p>
+        <div class="info-item">
+          <i class="bi bi-person"></i>
+          <div class="text"><h4>Name</h4><span>Deepak</span></div>
+        </div>
+        <div class="info-item">
+          <i class="bi bi-envelope"></i>
+          <div class="text"><h4>Email</h4><span>deepakunique09@gmail.com</span></div>
+        </div>
+        <div class="info-item">
+          <i class="bi bi-phone"></i>
+          <div class="text"><h4>Phone</h4><span>+91 7200400628</span></div>
+        </div>
+        <div class="info-item">
+          <i class="bi bi-geo-alt"></i>
+          <div class="text"><h4>Location</h4><span>Chennai, Tamil Nadu, India</span></div>
+        </div>
+        <div class="mt-3">
+          <a href="#" class="btn-custom"><i class="bi bi-send"></i> Let's Talk</a>
+        </div>
+      </div>
+      <div class="col-lg-7 fade-up">
+        <div class="contact-form">
+          <h3><i class="bi bi-pencil"></i> Send a Message</h3>
+          <form id="contactForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label"><i class="bi bi-person"></i> Full Name</label>
+                <input type="text" class="form-control" id="fullName" placeholder="Your name" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label"><i class="bi bi-envelope"></i> Email</label>
+                <input type="email" class="form-control" id="email" placeholder="you@example.com" required />
+              </div>
+            </div>
+            <div class="mt-3">
+              <label class="form-label"><i class="bi bi-tag"></i> Subject</label>
+              <input type="text" class="form-control" id="subject" placeholder="Subject" required />
+            </div>
+            <div class="mt-3">
+              <label class="form-label"><i class="bi bi-chat"></i> Message</label>
+              <textarea class="form-control" id="message" rows="4" placeholder="Write your message..." required></textarea>
+            </div>
+            <button type="submit" class="btn-custom w-100 mt-4"><i class="bi bi-send"></i> Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/deepak-s-570983394/" target="_blank"><i class="bi bi-linkedin"></i></a>
+    </div>
+    <p>© 2026 <span>Deepak</span> | Crafted with <i class="bi bi-heart-fill" style="color:#00e5ff;"></i> | All Rights Reserved</p>
+  </div>
+</footer>
+
+<!-- ─── SCROLL TO TOP ─── -->
+<button class="scroll-top" id="scrollTop"><i class="bi bi-chevron-up"></i></button>
+
+<!-- ─── BOOTSTRAP JS ─── -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // ─── Typing Animation ───
+  const words = ["Frontend Developer", "Java Developer", "Web Designer", "AI Student", "Full Stack Developer"];
+  let idx = 0, charIdx = 0, isDeleting = false;
+  const typingEl = document.getElementById('typing');
+
+  function typeEffect() {
+    const current = words[idx];
+    if (!isDeleting) {
+      typingEl.textContent = current.substring(0, ++charIdx);
+      if (charIdx === current.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 1200);
+        return;
+      }
+    } else {
+      typingEl.textContent = current.substring(0, --charIdx);
+      if (charIdx === 0) {
+        isDeleting = false;
+        idx = (idx + 1) % words.length;
+      }
+    }
+    setTimeout(typeEffect, isDeleting ? 70 : 120);
+  }
+  typeEffect();
+
+  // ─── Scroll Header Shadow ───
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ─── Scroll to Top ───
+  const scrollBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ─── Active Nav Link ───
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  function updateActive() {
+    let current = '';
+    sections.forEach(section => {
+      const top = section.offsetTop - 120;
+      if (window.scrollY >= top) current = section.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  }
+  window.addEventListener('scroll', updateActive);
+
+  // ─── Project Modal Data ───
+  const projectData = {
+    'convex-hull': {
+      icon: 'bi-cube',
+      title: 'Convex Hull Detection',
+      desc: 'Implementation of computational geometry algorithms to detect the convex hull of a set of points. Built with Python and OpenCV, it visualizes the smallest convex polygon enclosing all points.',
+      tech: ['Python', 'OpenCV', 'NumPy', 'Computational Geometry', 'Matplotlib']
+    },
+    'auto-door': {
+      icon: 'bi-door-open',
+      title: 'Auto Door Opening System',
+      desc: 'IoT‑based automatic door using PIR motion sensor and Arduino. Detects human presence and triggers a servo motor.',
+      tech: ['Arduino', 'PIR Sensor', 'Servo Motor', 'C++', 'IoT']
+    },
+    'quantum': {
+      icon: 'bi-shield-lock',
+      title: 'Quantum Cryptography for Digital Identity',
+      desc: 'Cutting‑edge digital identity system using quantum cryptography principles (QKD simulation) for ultra‑secure authentication.',
+      tech: ['Python', 'Quantum Computing', 'Qiskit', 'Cryptography', 'Blockchain']
+    },
+    'gesture': {
+      icon: 'bi-hand-peace',
+      title: 'Hand Gesture Recognition',
+      desc: 'Real‑time hand gesture recognition with OpenCV and MediaPipe. Detects and classifies gestures for touch‑free control.',
+      tech: ['Python', 'OpenCV', 'MediaPipe', 'TensorFlow', 'Computer Vision']
+    },
+    'airport': {
+      icon: 'bi-airplane',
+      title: 'Airport Management System',
+      desc: 'Standalone desktop app for flight scheduling, passenger check‑in, baggage tracking, and crew management.',
+      tech: ['Java', 'SQL', 'Swing']
+    },
+    'courier': {
+      icon: 'bi-truck',
+      title: 'Courier & Parcel Tracking System',
+      desc: 'Full‑stack web app for tracking parcels, managing shipments, and updating delivery status with real‑time dashboard.',
+      tech: ['Django', 'React', 'SQL', 'CSS3']
+    }
+  };
+
+  // ─── Populate modal on open ───
+  const modal = document.getElementById('projectModal');
+  modal.addEventListener('show.bs.modal', function (event) {
+    const card = event.relatedTarget;
+    const key = card.dataset.project;
+    const data = projectData[key];
+    if (!data) return;
+
+    document.getElementById('modalIcon').innerHTML = `<i class="bi ${data.icon}"></i>`;
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalDescription').textContent = data.desc;
+    document.getElementById('modalTech').innerHTML = data.tech.map(t => `<span>${t}</span>`).join('');
+  });
+
+  // ─── Contact Form ───
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !subject || !message) {
+      alert('Please fill in all fields.');
+      return;
+    }
+    if (!email.includes('@') || !email.includes('.')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    alert('✅ Thank you, ' + name + '! Your message has been sent.\nI\'ll get back to you shortly.');
+    this.reset();
+  });
+
+  // ─── Fade-up observer ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
